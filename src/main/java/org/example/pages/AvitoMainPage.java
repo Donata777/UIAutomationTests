@@ -35,6 +35,7 @@ public class AvitoMainPage {
 
     @FindBy(xpath = "//input[@data-marker='popup-location/region/search-input']")
     private WebElement cityInput;
+    
     private final By cityListbox = By.xpath("//div[@role='listbox']/button[contains(@data-marker, 'popup-location/region/custom-option')]");
 
     @FindBy(xpath = "//div[@role='listbox']/button[contains(@data-marker, 'popup-location/region/custom-option')][1]")
@@ -42,6 +43,9 @@ public class AvitoMainPage {
 
     @FindBy(xpath = "//button[@data-marker='popup-location/save-button']")
     private WebElement showButton;
+
+    @FindBy(xpath = "//span[@class='buyer-location-nev1ty']")
+    private WebElement selectedCity;
 
 
     public AvitoMainPage(WebDriver driver) {
@@ -86,6 +90,8 @@ public class AvitoMainPage {
         cityInput.sendKeys(cityName);
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(cityListbox, 1));
         wait.until(ExpectedConditions.elementToBeClickable(firstCityOption)).click();
+        wait.until(ExpectedConditions.attributeToBe(cityInput, "value", cityName));
         wait.until(ExpectedConditions.elementToBeClickable(showButton)).click();
+        wait.until(ExpectedConditions.textToBePresentInElement(selectedCity, cityName));
     }
 }
