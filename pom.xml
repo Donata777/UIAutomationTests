@@ -5,10 +5,13 @@
   <groupId>org.example</groupId>
   <artifactId>UIAutomationTests</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>UIAutomationTests</name>
   <url>http://maven.apache.org</url>
+  <modules>
+    <module>homework1</module>
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
